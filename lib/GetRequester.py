@@ -7,7 +7,13 @@ class GetRequester:
         self.url = url
 
     def get_response_body(self):
-        pass
+        """Query the endpoint and return the raw response body as bytes"""
+        response = requests.get(self.url)
+        return response.content
+
 
     def load_json(self):
-        pass
+        """Convert the endpoint data to JSON and return parsed data"""
+        response_body = self.get_response_body()
+        return json.loads(response_body)
+    
